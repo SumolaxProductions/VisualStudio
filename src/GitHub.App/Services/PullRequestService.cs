@@ -571,7 +571,7 @@ namespace GitHub.Services
 
         public bool IsPullRequestFromRepository(ILocalRepositoryModel repository, PullRequestDetailModel pullRequest)
         {
-            return pullRequest.HeadRepositoryOwner == repository.CloneUrl.Owner;
+            return string.Equals(repository?.CloneUrl.Owner, pullRequest.HeadRepositoryOwner, StringComparison.OrdinalIgnoreCase);
         }
 
         public IObservable<Unit> SwitchToBranch(ILocalRepositoryModel repository, PullRequestDetailModel pullRequest)
